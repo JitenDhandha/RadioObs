@@ -46,7 +46,7 @@ class Telescope:
 		self.frequency = t_frequency				#Type: double, Units: MHz
 		self.bandwidth = t_bandwidth				#Type: double, Units: MHz
 		self.aperture_efficiency = t_aperture_efficiency	#Type: double (between 0 and 1)
-		self.system_temperature = t_system_temperature		#Type: double, Units: MHz
+		self.system_temperature = t_system_temperature		#Type: double, Units: K
 
 	#Effective area of the telescope (in m^2)
 	def effective_area(self):
