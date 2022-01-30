@@ -117,7 +117,7 @@ class Source:
 		ax.plot_date(observation_times.plot_date, altitudes, fmt='ko', ls='-', label=r'$\mathrm{Source}$')
 		ax.axhline(0,c='red',linestyle='-',label=r'$\mathrm{Horizon}$')
 		ax.axhline(10,c='red',linestyle='--',label=r'$10^{\circ}~\mathrm{threshold}$')
-		ax.set_xlabel(r"$\mathrm{Time~of~the~day~[UTC,~hours]}$",fontsize='large')
+		ax.set_xlabel(r"$\mathrm{Time~of~the~day~[local,~hours]}$",fontsize='large')
 		ax.set_ylabel(r"$\mathrm{Altitude~in~the~sky~[degrees]}$",fontsize='large')
 		ax.set_title(r"$\mathrm{{Altitude~of~source~{0}~in~the~sky~on~{1}}}$".format(self.name,date),fontsize='large')
 		fig.gca().xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))	#Time axis formatting
