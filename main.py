@@ -17,16 +17,16 @@ from astropy import time as astrotime
 T_name = "42-ft telescope"
 T_latitude = "53d 14m 10.5s"		#Latitude (degree,min,sec)
 T_longitude = "2d 18m 25.7s"		#Longitude (degree,min,sec)
-T_diameter = 12.8			#Diameter (metres)
-T_frequency = 610			#Observing frequency (MHz)
-T_bandwidth = 10			#Bandwidth (MHz)
+T_diameter = 12.8					#Diameter (metres)
+T_frequency = 610					#Observing frequency (MHz)
+T_bandwidth = 10					#Bandwidth (MHz)
 T_aperture_efficiency = 0.55		#Aperture efficiency (dimensionless)
-T_system_temperature = 130		#System temperature (Kelvin)
+T_system_temperature = 130			#System temperature (Kelvin)
 
 #Enter the details of the source you're trying to observe here
 S_name = "B0833-45"					
-S_RA = "08:35:20.6"			#Right Ascension (hour,min,sec)
-S_Dec = "-45:10:34.8"			#Declination (degree,min,sec)
+S_RA = "08:35:20.6"					#Right Ascension (hour,min,sec)
+S_Dec = "-45:10:34.8"				#Declination (degree,min,sec)
 S_flux_density = 1100.00/1000 		#Flux density at telescope observing frequency (Jansky)
 
 
@@ -38,13 +38,13 @@ class Telescope:
 	def __init__(self, t_name, t_location, t_diameter, t_frequency, t_bandwidth, t_aperture_efficiency, t_system_temperature):
 		
 		#Identifiers for the telescope
-		self.name = t_name					#Type: str
-		self.location = t_location				#Type: astropy.coordinates.EarthLocation, Units: Lat (degree,min,sec) and Lon (degree,min,sec)
-		self.diameter = t_diameter				#Type: double, Units: m
+		self.name = t_name									#Type: str
+		self.location = t_location							#Type: astropy.coordinates.EarthLocation, Units: Lat (degree,min,sec) and Lon (degree,min,sec)
+		self.diameter = t_diameter							#Type: double, Units: m
 
 		#Characteristics of the telescope
-		self.frequency = t_frequency				#Type: double, Units: MHz
-		self.bandwidth = t_bandwidth				#Type: double, Units: MHz
+		self.frequency = t_frequency						#Type: double, Units: MHz
+		self.bandwidth = t_bandwidth						#Type: double, Units: MHz
 		self.aperture_efficiency = t_aperture_efficiency	#Type: double (between 0 and 1)
 		self.system_temperature = t_system_temperature		#Type: double, Units: K
 
@@ -58,7 +58,7 @@ class Telescope:
 	def gain(self):
 
 		gain = self.effective_area()/(2*const.k)
-		gain *= 10**(-26)	#Conversion from K/(W/m^2/Hz) to K/Jy
+		gain *= 10**(-26)		#Conversion from K/(W/m^2/Hz) to K/Jy
 		return gain
 
 	#Function to print the details of the telescope
@@ -83,9 +83,9 @@ class Telescope:
 class Source:
 	def __init__(self, s_name, s_location, s_flux_density):
 
-		self.name = s_name 					#Type: str
-		self.location = s_location 				#Type: astropy.coordinates.SkyCoord, Units: RA (hour,min,sec) and Dec (degree,min,sec)
-		self.flux_density = s_flux_density			#Type: double, Units: Jy
+		self.name = s_name 									#Type: str
+		self.location = s_location 							#Type: astropy.coordinates.SkyCoord, Units: RA (hour,min,sec) and Dec (degree,min,sec)
+		self.flux_density = s_flux_density					#Type: double, Units: Jy
 
 	#Function to print the details of the telescope
 	def print_data(self):
@@ -116,7 +116,7 @@ class Source:
 		ax = fig.add_subplot(111)
 		ax.plot_date(observation_times.plot_date, altitudes, fmt='ko', ls='-', label=r'$\mathrm{Source}$')
 		ax.axhline(0,c='red',linestyle='-',label=r'$\mathrm{Horizon}$')
-		ax.axhline(10,c='red',linestyle='--',label=r'$10^{\circ}~\mathrm{degree}$')
+		ax.axhline(10,c='red',linestyle='--',label=r'$10^{\circ}~\mathrm{threshold}$')
 		ax.set_xlabel(r"$\mathrm{Time~of~the~day~[UTC,~hours]}$",fontsize='large')
 		ax.set_ylabel(r"$\mathrm{Altitude~in~the~sky~[degrees]}$",fontsize='large')
 		ax.set_title(r"$\mathrm{{Altitude~of~source~{0}~in~the~sky~on~{1}}}$".format(self.name,date),fontsize='large')
